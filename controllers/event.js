@@ -50,16 +50,17 @@ export const updateEvent = async (req, res, next) => {
 export const deleteEvent = async (req, res, next) => {
     try {
         // const { id } = req.params;
-        const event = await EventModel.findByIdAndDelete(req.params.id);
+        const eventId = req.params.id;
+
+        const event = await EventModel.findByIdAndDelete(eventId);
         // res.status(200).json();
 
-        if(product)
-        {
-            res.status(200).send("Event deleted");
+        if (!event) {
+            return res.status(404).send("Event not found");
         }
-        else{
-            res.status(404).send("Event not found");
-        }
+
+
+        return res.status(200).send("Event Deleted");
 
 
     } catch (error) {

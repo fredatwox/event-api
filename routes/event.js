@@ -1,4 +1,4 @@
-import  {Router}  from "express";
+import { Router } from "express";
 import { addEvent, getEvent, updateEvent, deleteEvent } from "../controllers/event.js"
 
 
